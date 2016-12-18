@@ -2,7 +2,7 @@ namespace DotNetPrimes {
 	class Primes {
 		private byte[] primes;
 
-		public void SetNotPrime(int number) {
+		private void SetNotPrime(int number) {
 			var byteIndex = number >> 3;
 			var setByte = primes[byteIndex];
 			var bitIndex = (byteIndex << 3) ^ number;
