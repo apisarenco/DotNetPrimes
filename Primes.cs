@@ -1,16 +1,17 @@
+using System.Numerics;
+
 namespace DotNetPrimes {
 	class Primes {
 		private byte[] primes;
+		private BigInteger primesHolder;
 
 		private void SetNotPrime(int number) {
-			var byteIndex = number >> 3;
-			var setByte = primes[byteIndex];
-			var bitIndex = (byteIndex << 3) ^ number;
-			var bitShift = 8 - bitIndex - 1;
-			primes[byteIndex] = (byte)(primes[byteIndex] & (0xFF ^ (1 << bitShift)));
+			primesHolder = primesHolder | (new BigInteger(1) << (number - 2));
 		}
 
 		public bool IsPrime(int number) {
+			
+
 			var byteIndex = number >> 3;
 			if(byteIndex>=primes.Length) {
 				return true;
